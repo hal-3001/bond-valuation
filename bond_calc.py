@@ -44,3 +44,6 @@ class Bond:
         d=np.sum(t*Bond.helper(self,intrate))/self.price
         c=d*(1+intrate/self.freq)**-2
         return c
+    def price_change_pcg(self,delta_y):
+        pct_change=Bond.duration(self,Bond.ytm(self))*delta_y+0.5*Bond.convexity(self,Bond.ytm(self))*delta_y**2
+        return -pct_change
